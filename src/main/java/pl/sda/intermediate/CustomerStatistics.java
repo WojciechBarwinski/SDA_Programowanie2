@@ -77,4 +77,30 @@ public class CustomerStatistics {
     }
 
 
+//    7. Napisz metodę, która zwróci mapę
+//        <imię,<suma_zarobków_osób_o_taki_imieniu>>
+
+    public static Map<String, BigDecimal> giveNameAndSumSalaryMap() {
+        Map<String, BigDecimal> resultMap = new HashMap<>();
+        for (Customer person : people) {
+            if (resultMap.containsKey(person.getFirstName())) {
+                BigDecimal salarySum = resultMap.get(person.getFirstName());
+                BigDecimal newSum = salarySum.add(person.getSalary());
+                resultMap.put(person.getFirstName(), newSum);
+            } else {
+
+                resultMap.put(person.getFirstName(), person.getSalary());
+            }
+        }
+        return resultMap;
+    }
+
+    public static Map<String, Optional<BigDecimal>> giveNameAndSumSalaryMapWithStream() {
+        return giveList().stream()
+                .collect(Collectors.groupingBy(x -> x.getFirstName(),
+                        Collectors.mapping(e -> e.getSalary(),
+                                Collectors.reducing((a, b) -> a.add(b)))));
+
+
+    }
 }
