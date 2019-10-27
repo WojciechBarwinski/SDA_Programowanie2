@@ -1,15 +1,17 @@
 package pl.sda.intermediate;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Customer {
     private Integer id;
-    private String firstName;
+    -private String firstName;
     private String lastName;
     private Integer age;
     private BigDecimal salary;
