@@ -2,10 +2,12 @@ package pl.sda.intermediate;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import pl.sda.intermediate.playlists.Movie;
+import pl.sda.intermediate.playlists.Music;
+import pl.sda.intermediate.playlists.PlayMode;
+import pl.sda.intermediate.playlists.Playlist;
 
 import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PlaylistTest {
 

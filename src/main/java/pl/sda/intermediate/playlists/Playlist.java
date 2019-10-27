@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.playlists;
 
 import java.util.ArrayList;
 import java.util.Collections;

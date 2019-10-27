@@ -2,12 +2,12 @@ package pl.sda.intermediate;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pl.sda.intermediate.customers.Customer;
+import pl.sda.intermediate.customers.CustomerStatistics;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerStatisticsTest {
     @Test

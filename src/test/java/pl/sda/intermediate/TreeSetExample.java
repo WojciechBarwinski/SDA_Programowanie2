@@ -1,6 +1,7 @@
 package pl.sda.intermediate;
 
 import org.junit.jupiter.api.Test;
+import pl.sda.intermediate.customers.Customer;
 
 import java.util.Comparator;
 import java.util.Set;
