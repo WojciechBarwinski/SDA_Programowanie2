@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class Customer {
     private Integer id;
-    -private String firstName;
+    private String firstName;
     private String lastName;
     private Integer age;
     private BigDecimal salary;

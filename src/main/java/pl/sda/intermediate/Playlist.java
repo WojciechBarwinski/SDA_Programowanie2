@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Playlist extends Playable {
 
     public static final int OUR_DEFINITION_OF_LOOP = 10;
-    private List<Playable> playableList;
+    private List<Playable> playableList = new ArrayList<>();
 
     private PlayMode playMode = PlayMode.SEQUENTIAL;
 
@@ -41,7 +41,7 @@ public class Playlist extends Playable {
     private String playElements(List<Playable> playableList) {
         return playableList.stream()
                 .map(x -> x.play())
-                .collect(Collectors.joining()); //fixme
+                .collect(Collectors.joining("\n")); //fixme
 
 //        String playedList = ""; //to samo co wyżej ^
 //        for (Playable playable : playableList) {
