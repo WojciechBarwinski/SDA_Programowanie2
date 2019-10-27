@@ -1,13 +1,16 @@
 package pl.sda.intermediate;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Playlist extends Playable {
 
+    public static final int OUR_DEFINITION_OF_LOOP = 10;
     private List<Playable> playableList;
 
-    private PlayMode playMode;
+    private PlayMode playMode = PlayMode.SEQUENTIAL;
 
     public void add(Playable playable) {
         playableList.add(playable);
@@ -19,23 +22,31 @@ public class Playlist extends Playable {
 
     @Override
     public String play() {
-        String playedList = "";
+
         if (PlayMode.SEQUENTIAL == playMode) {
-            for (Playable playable : playableList) {
-                playedList += playable.play();
-            }
+            return playElements(playableList);
         } else if (PlayMode.RANDOM == playMode) {
-            Collections.shuffle(playableList);
-            for (Playable playable : playableList) {
-                playedList += playable.play();
+            List<Playable> playableListCopy = new ArrayList<>(playableList);
+            Collections.shuffle(playableListCopy);
+            return playElements(playableListCopy);
+        } else {
+            String listOut = ""; //fixme -> stream
+            for (int i = 0; i < OUR_DEFINITION_OF_LOOP; i++) {
+                listOut += playElements(playableList);
             }
-        } else if (PlayMode.LOOP == playMode) {
-            for (int i = 0; i < 10; i++) {
-                for (Playable playable : playableList) {
-                    playedList += playable.play();
-                }
-            }
+            return listOut;
         }
-        return "";
+    }
+
+    private String playElements(List<Playable> playableList) {
+        return playableList.stream()
+                .map(x -> x.play())
+                .collect(Collectors.joining()); //fixme
+
+//        String playedList = ""; //to samo co wyżej ^
+//        for (Playable playable : playableList) {
+//            playedList += playable.play();
+//        }
+//        return playedList;
     }
 }

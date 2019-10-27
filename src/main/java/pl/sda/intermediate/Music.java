@@ -1,8 +1,11 @@
 package pl.sda.intermediate;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Music extends Playable{
-    String artist;
-    String title;
+    private String artist;
+    private String title;
 
     @Override
     public String play() {

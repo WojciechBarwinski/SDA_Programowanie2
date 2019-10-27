@@ -1,7 +1,10 @@
 package pl.sda.intermediate;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Movie extends Playable{
-    String title;
+    private String title;
 
     @Override
     public String play() {
