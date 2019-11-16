@@ -14,9 +14,17 @@ public class CategoryDTO {
     private Integer id;
     private String name;
     private Integer parentId;
-    private boolean selected;
-    private boolean open;
+    private CategoryState state;
 
+    public String getText() {
+        return name;
+    }
 
+    public String getParent() {
+        if (parentId == null) {
+            return "#";
+        }
+        return parentId.toString();
+    }
 
 }

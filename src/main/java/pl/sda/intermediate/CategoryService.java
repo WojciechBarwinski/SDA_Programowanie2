@@ -20,8 +20,8 @@ public class CategoryService {
     private void markAsSelectedOrOpen(String categoryName, List<CategoryDTO> categoryDTOS) {
         for (CategoryDTO categoryDTO : categoryDTOS) {
             if (categoryDTO.getName().contains(categoryName)){
-                categoryDTO.setSelected(true);
-                categoryDTO.setOpen(true);
+                categoryDTO.getState().setSelected(true);
+            categoryDTO.getState().setOpened(true);
                 openParent(categoryDTO, categoryDTOS);
             }
         }
@@ -34,16 +34,13 @@ public class CategoryService {
         CategoryDTO parent = null;
         for (CategoryDTO potentialParent : otherCategories) {
             if (potentialParent.getId().equals(currentCategory.getParentId())){
-                potentialParent.setOpen(true);
+                potentialParent.getState().setOpened(true);
                 parent = potentialParent;
                 break;
             }
         }
         openParent(parent, otherCategories);
-
-
     }
-
 
     private CategoryDTO convertToDTO (Category category){
 
@@ -51,6 +48,7 @@ public class CategoryService {
         categoryDTO.setId(category.getId());
         categoryDTO.setName(category.getName());
         categoryDTO.setParentId(category.getParentId());
+        categoryDTO.setState(new CategoryState());
 
         return categoryDTO;
     }
