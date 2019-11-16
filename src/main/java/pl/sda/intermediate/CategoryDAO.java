@@ -1,5 +1,7 @@
 package pl.sda.intermediate;
 
+import lombok.Getter;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -8,8 +10,9 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CategoryDAO {
+public class CategoryDAO { //Data Access Object
 
+    @Getter
     private List<Category> categoryList;
 
     private static CategoryDAO instance;
