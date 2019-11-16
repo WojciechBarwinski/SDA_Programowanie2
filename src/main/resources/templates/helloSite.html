@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<form action="/hello">
+    <input type="text" name="personName" placeholder="Imię">
+    <button>Wyślij</button>
+</form>
+Cześć
+<hr>
+<p th:text="${message}"></p>
+<hr>
+<ul>
+    <li th:each="item: ${history}" th:text="${item}">
+    </li>
+</ul>
+</body>
+</html>
