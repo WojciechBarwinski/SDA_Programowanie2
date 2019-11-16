@@ -15,7 +15,6 @@ public class TreeSetExample {
         objects.add("a");
         System.out.println(objects);
 
-
         Comparator<Customer> customerComparator = (x, y) -> y.getFirstName().compareTo(x.getFirstName());
         Set<Customer> customers = new TreeSet<>(customerComparator);
         Customer c1 = new Customer();
