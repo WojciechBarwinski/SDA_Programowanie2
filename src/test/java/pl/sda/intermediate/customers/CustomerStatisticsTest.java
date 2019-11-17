@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.customers;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

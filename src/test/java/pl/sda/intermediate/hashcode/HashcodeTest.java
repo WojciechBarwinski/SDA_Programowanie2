@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.hashcode;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;

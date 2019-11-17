@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.collections;
 
 import org.junit.jupiter.api.Test;
 import pl.sda.intermediate.customers.Customer;

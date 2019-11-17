@@ -1,4 +1,4 @@
-package pl.sda.intermediate.bank;
+package pl.sda.intermediate.threads.bank;
 
 import java.util.Random;
 

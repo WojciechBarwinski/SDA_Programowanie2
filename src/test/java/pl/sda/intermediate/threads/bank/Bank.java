@@ -1,6 +1,4 @@
-package pl.sda.intermediate.bank;
-
-import lombok.Getter;
+package pl.sda.intermediate.threads.bank;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
