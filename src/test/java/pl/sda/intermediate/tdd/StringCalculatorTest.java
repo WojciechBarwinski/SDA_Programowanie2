@@ -60,4 +60,29 @@ public class StringCalculatorTest {
         int result = StringCalculator.adding(text);
         Assertions.assertEquals(14, result);
     }
+
+    @Test
+    void shouldThrowExceptionWhenNegativeNumbersArePassed() {
+        String text = "//x\n2x -3 x5 x -4 x -4";
+
+        NegativeNumbersException exception = Assertions.assertThrows(
+                NegativeNumbersException.class,
+                () -> StringCalculator.adding(text));// LAZY
+        Assertions.assertEquals("Liczby ujemne niedozwolone: -4, -4, -3",
+                                exception.getMessage());
+    }
+
+    @Test
+    void shouldReturnSumIgnoringNumbersBiggerThanThousand() {
+        String text = "//x\n2x 3 x5 x 4 x1002";
+        int result = StringCalculator.adding(text);
+        Assertions.assertEquals(14, result);
+    }
+
+    @Test
+    void shouldReturnSumWhenTextHasLongCustomDelimiter() {
+        String text = "//xxx\n2xxx 3 xxx5 xxx 4 xxx1002";
+        int result = StringCalculator.adding(text);
+        Assertions.assertEquals(14, result);
+    }
 }
