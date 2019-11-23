@@ -34,7 +34,7 @@
     <label for="country">Kraj:</label>
     <select autofocus class="form-control" id="country" th:field="${form.country}">
         <option th:value="''" th:text="Wybierz"></option>
-        <option th:each="country : ${countries}" th:value="${country.symbol}" th:text="${country.polishName}"></option>
+        <option th:each="x : ${countries}" th:value="${x.symbol}" th:text="${x.countryName}"></option>
     </select>
     <p class="error" th:text="${countryValRes}"/>
 

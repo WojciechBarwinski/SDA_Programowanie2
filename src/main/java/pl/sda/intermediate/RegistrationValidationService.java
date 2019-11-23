@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrationValidationService {
+public class RegistrationValidationService { //todo test
 
     public Map<String, String> validate(RegistrationDTO dto){
         Map<String, String> errorsMap = new HashMap<>();
@@ -53,7 +53,7 @@ public class RegistrationValidationService {
         }
 
         return errorsMap;
-
-
     }
+
+
 }

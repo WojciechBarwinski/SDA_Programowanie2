@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.security.sasl.Sasl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,16 @@ public class OnlyOneController {
         model.addAttribute("message", "Hello " + (personName == null ? "World" : personName));
         model.addAttribute("history", history);
         return "helloSite";
+    }
+
+    @RequestMapping("/register") //to jest url na który metoda reaguje - po wejsciu na niego wyswietli sie strona registerPage
+    public String registerForm(Model model){//model zapewniony przez Spring
+        RegistrationDTO registrationDTO = new RegistrationDTO(); //pusty obiekt na dane (formularz)
+        model.addAttribute("form", registrationDTO);
+        model.addAttribute("countries", Countries.values());
+
+
+        return "registerPage";//to jest nazwa strony html jaka nam sie wyswietli
     }
 
 
