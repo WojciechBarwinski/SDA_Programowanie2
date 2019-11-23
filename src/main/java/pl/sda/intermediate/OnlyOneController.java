@@ -49,7 +49,14 @@ public class OnlyOneController {
         RegistrationValidationService registrationValidationService = new RegistrationValidationService();
         Map<String, String> errorsMap = registrationValidationService.validate(registrationDTO);
         if(errorsMap.isEmpty()){
-
+            RegistrationService registrationService = new RegistrationService();
+            registrationService.register(registrationDTO);
+            return "";
+        }else {
+            model.addAllAttributes(errorsMap);
+            model.addAttribute("form", registrationDTO);
+            model.addAttribute("countries", Countries.values());
+            return "registerPage";
         }
     }
 
