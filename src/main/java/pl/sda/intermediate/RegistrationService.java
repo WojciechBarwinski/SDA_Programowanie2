@@ -3,9 +3,9 @@ package pl.sda.intermediate;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class RegistrationService {
+    UserDAO userDAO = new UserDAO();
 
     public void register(RegistrationDTO dto) {
-        UserDAO userDAO = new UserDAO();
         if (userDAO.emailExists(dto.getEMail())) {
             throw new RuntimeException("Email istnieje: " + dto.getEMail());
         }

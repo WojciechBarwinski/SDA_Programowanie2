@@ -16,8 +16,8 @@
 <body class="text-center">
 <div th:replace="fragments/header :: header"></div>
 <form class="form-signin" th:action="@{/login}" method="post">
-    <div th:if="${error}" class="alert alert-danger">
-        <span th:text="${error}"/>
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <span th:text="${errorMessage}"/>
     </div>
     <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
     <label for="inputEmail" class="sr-only">Email address</label>

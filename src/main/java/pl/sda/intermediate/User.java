@@ -2,9 +2,14 @@ package pl.sda.intermediate;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class User {
+public class User implements Serializable {
+
+    private long serialVersionUID = 1265464256234546L;
 
     private String firstName;
     private String lastName;
