@@ -50,36 +50,52 @@ public class OnlyOneController {
     public String registerEffect(RegistrationDTO registrationDTO, Model model) { //metoda reagująca na wysłanie formularza rejestracji, registrationDto zostaje uzupełniony przez użytkownika
         RegistrationValidationService registrationValidationService = new RegistrationValidationService();
         Map<String, String> errorsMap = registrationValidationService.validate(registrationDTO);
+        model.addAttribute("form", registrationDTO);
         if (errorsMap.isEmpty()) { //dane są poprawne
+            return tryToRegisterUser(registrationDTO, model);
+        }
+        model.addAllAttributes(errorsMap);
+        model.addAttribute("countries", Countries.values());
+        return "registerPage";
+    }
+
+    private String tryToRegisterUser(RegistrationDTO registrationDTO, Model model) {
+        try {
             registrationService.register(registrationDTO);
-            model.addAttribute("form", registrationDTO);
-            return "helloPage";
-        } else {
-            model.addAllAttributes(errorsMap);
-            model.addAttribute("form", registrationDTO);
+        } catch (Exception e) {
             model.addAttribute("countries", Countries.values());
+            model.addAttribute("userExistsExceptionMessage", e.getMessage());
             return "registerPage";
         }
+        return "helloPage";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginForm(Model model){
+    public String loginForm(Model model) {
         LoginDTO loginDTO = new LoginDTO();
         model.addAttribute("form", loginDTO);
         return "loginPage";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginEffect(LoginDTO dto, Model model){
+    public String loginEffect(LoginDTO dto, Model model) {
         LoginService loginService = new LoginService();
         boolean ableToLogin = loginService.login(dto);
-        if(ableToLogin){
+        if (ableToLogin) {
             UserContextHolder.addUserLogin(dto.getLogin());
             return "index";
-        }else {
+        } else {
             model.addAttribute("form", dto);
             model.addAttribute("errorMessage", "Błąd logowania");
             return "loginPage";
         }
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutEffect(Model model){
+        model.addAttribute("form", new LoginDTO());
+        model.addAttribute("logoutMessage", "Zostałeś wylogowany");
+        UserContextHolder.logout();
+        return "loginPage";
     }
 }
