@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.categories;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,19 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.sda.intermediate.app.categories.CategoryDTO;
+import pl.sda.intermediate.app.categories.CategoryService;
+import pl.sda.intermediate.app.login.LoginDTO;
+import pl.sda.intermediate.app.login.LoginService;
+import pl.sda.intermediate.app.registration.RegistrationDTO;
+import pl.sda.intermediate.app.registration.RegistrationService;
+import pl.sda.intermediate.app.registration.RegistrationValidationService;
+import pl.sda.intermediate.app.users.UserContextHolder;
+import pl.sda.intermediate.app.users.UserDAO;
+import pl.sda.intermediate.app.weather.WeatherService;
 
-import javax.security.sasl.Sasl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

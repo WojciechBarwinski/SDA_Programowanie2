@@ -1,4 +1,4 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.users;
 
 import java.io.*;
 import java.util.*;

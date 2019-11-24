@@ -1,8 +1,7 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.registration;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 

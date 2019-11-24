@@ -1,4 +1,8 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.weather;
+
+import pl.sda.intermediate.app.users.User;
+import pl.sda.intermediate.app.users.UserContextHolder;
+import pl.sda.intermediate.app.users.UserDAO;
 
 import java.io.BufferedReader;
 import java.io.IOException;

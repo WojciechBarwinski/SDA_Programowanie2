@@ -1,5 +1,5 @@
 
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.weather;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

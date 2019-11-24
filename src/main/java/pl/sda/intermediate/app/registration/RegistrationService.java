@@ -1,6 +1,8 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.registration;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import pl.sda.intermediate.app.users.User;
+import pl.sda.intermediate.app.users.UserDAO;
 
 public class RegistrationService {
     UserDAO userDAO;

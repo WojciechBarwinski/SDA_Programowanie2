@@ -1,8 +1,8 @@
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.login;
 
 import org.apache.commons.codec.digest.DigestUtils;
-
-import java.util.Optional;
+import pl.sda.intermediate.app.users.User;
+import pl.sda.intermediate.app.users.UserDAO;
 
 public class LoginService {
     private UserDAO userDAO;

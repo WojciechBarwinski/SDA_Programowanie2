@@ -1,5 +1,5 @@
 
-package pl.sda.intermediate;
+package pl.sda.intermediate.app.weather;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

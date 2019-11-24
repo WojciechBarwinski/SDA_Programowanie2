@@ -1,8 +1,7 @@
 package pl.sda.intermediate;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import pl.sda.intermediate.app.categories.CategoryDAO;
 
 class CategoryDAOTest {
 
