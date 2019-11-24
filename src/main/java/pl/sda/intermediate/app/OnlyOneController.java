@@ -13,6 +13,7 @@ import pl.sda.intermediate.app.registration.RegistrationValidationService;
 import pl.sda.intermediate.app.users.UserContextHolder;
 import pl.sda.intermediate.app.users.UserDAO;
 import pl.sda.intermediate.app.weather.WeatherService;
+import pl.sda.intermediate.app.weather.WeatherWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,8 +110,8 @@ public class OnlyOneController {
 
     @ResponseBody //to powoduje, ze metoda zwróci JSONa
     @RequestMapping(value = "/weather", method = RequestMethod.GET)
-    public Object weather(){
+    public WeatherWrapper weather(){
 
-
+        return weatherService.getWeatherForCurrentUser();
     }
 }
