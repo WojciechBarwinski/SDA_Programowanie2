@@ -1,8 +1,10 @@
 package pl.sda.intermediate;
 
 
+import com.google.gson.Gson;
 import lombok.Setter;
 import org.junit.jupiter.api.Test;
+import pl.sda.intermediate.customers.Customer;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class JsonExample {
 
 
     @Test
-    public void serializeJson(){
+    public void serializeJson() {
         List<OtherObject> otherObjectList = new ArrayList<>();
         OtherObject otherObject = new OtherObject();
         otherObject.setId(1);
@@ -22,7 +24,7 @@ public class JsonExample {
         otherObjectList.add(otherObject);
 
         Map<Integer, String> someMap = new HashMap<>();
-        someMap.put(20, "coś");
+        someMap.put(3, "coś");
 
         SomeObject someObject = new SomeObject();
         someObject.setAge(10);
@@ -32,10 +34,14 @@ public class JsonExample {
         someObject.setName("Jason");
         someObject.setSalary(BigDecimal.valueOf(250.3));
 
+        Gson gson = new Gson();
+        String toJson = gson.toJson(someObject);
+        System.out.println(toJson);
 
+        SomeObject object = gson.fromJson(toJson, SomeObject.class);
+        System.out.println(object);
 
     }
-
 
     @Setter
     private class SomeObject {
@@ -54,6 +60,19 @@ public class JsonExample {
 
     }
 
+    private class RatesWrapper {
+
+        private String table;
+        private String no;
+        private String effectiveDate;
+        private List<Rate> rates;
+    }
+
+    private class Rate {
+        private String currency;
+        private String code;
+        private BigDecimal mid;
+    }
 
 }
 

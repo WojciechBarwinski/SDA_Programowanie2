@@ -3,11 +3,13 @@ package pl.sda.intermediate.customers;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Customer {
     private Integer id;
