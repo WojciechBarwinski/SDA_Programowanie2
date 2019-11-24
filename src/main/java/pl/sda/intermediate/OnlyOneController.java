@@ -2,10 +2,7 @@ package pl.sda.intermediate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.security.sasl.Sasl;
 import java.util.ArrayList;
@@ -17,6 +14,7 @@ public class OnlyOneController {
     private UserDAO userDAO = new UserDAO(); //tu RAZ tworzymy userDao -> "wynikowy singleton"
     private LoginService loginService = new LoginService(userDAO); //DEPENDENCY INJECTION
     private RegistrationService registrationService = new RegistrationService(userDAO);
+    private WeatherService weatherService = new WeatherService(userDAO);
 
     @RequestMapping("/categories")
     public String categoriesPage(@RequestParam(required = false) String input, Model model) {
@@ -98,5 +96,12 @@ public class OnlyOneController {
         model.addAttribute("logoutMessage", "Zostałeś wylogowany");
         UserContextHolder.logout();
         return "loginPage";
+    }
+
+    @ResponseBody //to powoduje, ze metoda zwróci JSONa
+    @RequestMapping(value = "/weather", method = RequestMethod.GET)
+    public Object weather(){
+
+
     }
 }
