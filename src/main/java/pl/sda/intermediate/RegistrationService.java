@@ -3,7 +3,11 @@ package pl.sda.intermediate;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class RegistrationService {
-    UserDAO userDAO = new UserDAO();
+    UserDAO userDAO;
+
+    public RegistrationService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public void register(RegistrationDTO dto) {
         if (userDAO.emailExists(dto.getEMail())) {

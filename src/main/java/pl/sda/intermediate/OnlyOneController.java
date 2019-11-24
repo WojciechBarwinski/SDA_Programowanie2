@@ -14,7 +14,9 @@ import java.util.Map;
 
 @Controller //to powoduje, że dana klasa jest także singletonem
 public class OnlyOneController {
-    private RegistrationService registrationService = new RegistrationService();
+    private UserDAO userDAO = new UserDAO(); //tu RAZ tworzymy userDao -> "wynikowy singleton"
+    private LoginService loginService = new LoginService(userDAO); //DEPENDENCY INJECTION
+    private RegistrationService registrationService = new RegistrationService(userDAO);
 
     @RequestMapping("/categories")
     public String categoriesPage(@RequestParam(required = false) String input, Model model) {
@@ -79,7 +81,6 @@ public class OnlyOneController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginEffect(LoginDTO dto, Model model) {
-        LoginService loginService = new LoginService();
         boolean ableToLogin = loginService.login(dto);
         if (ableToLogin) {
             UserContextHolder.addUserLogin(dto.getLogin());
@@ -92,7 +93,7 @@ public class OnlyOneController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutEffect(Model model){
+    public String logoutEffect(Model model) {
         model.addAttribute("form", new LoginDTO());
         model.addAttribute("logoutMessage", "Zostałeś wylogowany");
         UserContextHolder.logout();
