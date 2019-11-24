@@ -50,7 +50,7 @@ public class CategoryDAO { //Data Access Object
                 .filter(x->x<child.getId())
                 .sorted(Comparator.reverseOrder())
                 .findFirst()
-                .get();//fixme
+                .orElse(null);
         child.setParentId(parentId);
     }
 

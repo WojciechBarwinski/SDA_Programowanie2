@@ -23,7 +23,9 @@ public class WeatherService {
 
     public WeatherWrapper getWeatherForCurrentUser() {
         String userLoggedIn = UserContextHolder.getUserLoggedIn();
-        User user = userDAO.findUserByEmail(userLoggedIn).orElse(null);
+        User user = userDAO.findUserByEmail(userLoggedIn)
+                .orElseGet(()->createNewUser());
+
         String userCity = user.getCity();
         String userCountry = user.getCountry().toLowerCase();
 
@@ -32,6 +34,11 @@ public class WeatherService {
                         + userCity + "," + userCountry + "&appid=" + apiKey+"&units=metric&lang="+userCountry);
         Gson gson = new Gson();
         return gson.fromJson(json, WeatherWrapper.class);
+    }
+
+    private User createNewUser() {
+        System.out.println("Tworze nowego nadmiarowego usera");
+        return new User();
     }
 
     private String downloadText(String address) {
